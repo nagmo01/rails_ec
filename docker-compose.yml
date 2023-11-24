@@ -6,6 +6,11 @@ services:
       - db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
   web:
     build: .
     image: rails_template:latest
