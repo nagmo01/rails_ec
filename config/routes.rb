@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :tasks
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'admin/index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  get "/items" => "items#index"
+  get "/items/:id" => "items#show"
+
+  resources :tasks
 end
