@@ -3,7 +3,7 @@
 
 6.times do |i|
   item = Item.create!(name: "商品#{i}", price: rand(1000..10000), sku: "SKU#{i}", description: "商品#{i}の説明文です。" )
-  item.image.attach(io: File.open(Rails.root.join('storage/cart.jpg')), filename: 'cart.jpg')
+  item.image.attach(io: File.open(Rails.root.join('app/assets/images/cart.jpg')), filename: 'cart.jpg')
 
 
 end
