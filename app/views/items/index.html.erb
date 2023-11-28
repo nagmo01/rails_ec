@@ -9,7 +9,7 @@
             <!-- Sale badge-->
 
             <!-- Product image-->
-            <%= image_tag item.image.variant(resize_to_fit: [1000, 1000],rotate: 360) %>
+            <%= image_tag item.image.variant(resize_to_fit: [1000, 1000],rotate: 360) if item.image.attached? %>
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
