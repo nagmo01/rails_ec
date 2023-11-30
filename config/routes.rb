@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   get '/' => 'items#index'
   get '/items/:id' => 'items#show'
 
-  resources :tasks
 end
