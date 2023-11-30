@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.1'
 
-gem "aws-sdk-s3", require: false
+gem "aws-sdk-s3"
 gem 'image_processing'
 gem 'mini_magick'
 
