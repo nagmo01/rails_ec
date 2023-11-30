@@ -19,6 +19,8 @@ services:
       - .:/myapp
       - bundle:/usr/local/bundle
       - node_modules:/myapp/node_modules
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     depends_on:
