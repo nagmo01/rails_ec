@@ -2,12 +2,10 @@
 <section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
       <% @items.each do |item| %>
         <div class="col mb-5">
           <div class="card h-100">
             <!-- Sale badge-->
-
             <!-- Product image-->
             <%= image_tag item.image.variant(resize_to_fit: [1000, 1000],rotate: 360) if item.image.attached? %>
             <!-- Product details-->
