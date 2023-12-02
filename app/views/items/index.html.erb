@@ -12,7 +12,7 @@
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder"><%= item.name %></h5>
+                <h5 class="fw-bolder"><%= link_to(item.name, "/items/#{item.id}" )  %></h5>
                 <!-- Product price-->
                 <%= item.price %>円
               </div>
