@@ -5,5 +5,4 @@ Rails.application.routes.draw do
 
   get '/' => 'items#index'
   get '/items/:id' => 'items#show'
-
 end
