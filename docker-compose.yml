@@ -6,6 +6,11 @@ services:
       - db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
   web:
     build: .
     image: rails_template:latest
@@ -14,6 +19,8 @@ services:
       - .:/myapp
       - bundle:/usr/local/bundle
       - node_modules:/myapp/node_modules
+    env_file:
+      - .env
     ports:
       - "3000:3000"
     depends_on:
