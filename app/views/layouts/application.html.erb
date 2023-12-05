@@ -34,10 +34,13 @@
               Cart
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
+            <div class="btn btn-outline-dark">
+              <%= link_to "Admin", "/admin" %>
+            </div>
           </form>
         </div>
       </div>
-    </nav>
+    </nav>  
     <!-- Header-->
     <header class="bg-dark py-5">
       <div class="container px-4 px-lg-5 my-5">
@@ -47,6 +50,8 @@
         </div>
       </div>
     </header>
+    <div class="text-center text-white bg-primary"><%= flash[:danger] %></div>
+    <div class="text-center text-white bg-primary"><%= flash[:success] %></div>
     <%= yield %>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
