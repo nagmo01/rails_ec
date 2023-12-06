@@ -23,8 +23,8 @@
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center"><%= link_to("Edit", "/admin/edit/#{item.id}") %></div>
-              <div class="text-center"><%= link_to "delete", "/admin/delete/#{item.id}", data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %></div>
+              <div class="text-center"><%= link_to("Edit", "/admin/#{item.id}/edit" ) %></div>
+              <div class="text-center"><%= link_to "delete", "/admin/#{item.id}", data: { "turbo-method": :delete, turbo_confirm: "You sure?" } %></div>
             </div>
           </div>
         </div>
