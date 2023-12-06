@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post "/admin" => "admin#create"
   get "/admin/edit/:id" => "admin#edit"
   patch "/admin/update/:id" => "admin#update"
-  delete "/admin/:id" => "admin#destroy"
+  delete "/admin/delete/:id" => "admin#destroy"
 
 
   get '/' => 'items#index'

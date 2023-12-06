@@ -4,9 +4,7 @@ class AdminController < ApplicationController
   end
 
   def new
-    
     @item = Item.new
- 
   end
 
   def create
@@ -17,7 +15,7 @@ class AdminController < ApplicationController
       redirect_to "/admin"
     else
       flash[:danger] = "商品の登録に失敗しました。もう一度試してください。"
-      render "new"
+      render 'new', status: :unprocessable_entity
     end
   end
   
@@ -41,6 +39,13 @@ class AdminController < ApplicationController
       flash[:danger] = "商品の更新に失敗しました。もう一度試してください。"
       render :edit
     end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    flash[:success] = "投稿が削除されました。"
+    redirect_to "/admin", status: :see_other
   end
 
 private

@@ -17,7 +17,7 @@
     <%= f.text_area :description %>
     </p>
     <%= f.file_field :image %>
-    <div><%= image_tag @item.image.variant(resize_to_fit: [150, 150]) %></div>
+    <div><%= image_tag @item.image.variant(resize_to_fit: [150, 150]) if @item.image.attached? %></div>
     
     <%= f.submit "更新" %>
 
