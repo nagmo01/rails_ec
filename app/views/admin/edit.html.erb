@@ -1,25 +1,22 @@
 <%= form_with model: @item, url: "/admin/#{@item.id}", method: :patch do |f| %>
-    <p>
+  <p>
     <%= f.label(:name, "商品名") %>
     <%= f.text_field :name %>
-    </p>
-    <p>
+  </p>
+  <p>
     <%= f.label :price, "値段" %>
     <%= f.text_field :price %>
-    </p>
-    <p>
+  </p>
+  <p>
     <%= f.label :sku, "型番" %>
     <%= f.text_field :sku %>
-    </p>
-    <p>
+  </p>
+  <p>
     <%= f.label :description, "説明" %>
     <%= f.text_area :description %>
-    </p>
-    <%= f.file_field :image %>
-    <div><%= image_tag @item.image.variant(resize_to_fit: [150, 150]) if @item.image.attached? %></div>
-    
-    <%= f.submit "更新" %>
-
+  </p>
+  <%= f.file_field :image %>
+  <div><%= image_tag @item.image.variant(resize_to_fit: [150, 150]) if @item.image.attached? %></div>
+  <%= f.submit "更新" %>
 <% end %>
-
 <%= link_to "戻る", '/admin' %>

@@ -1,31 +1,27 @@
 <div class="nav justify-content-center">
-<%= form_with model: @item, url: '/admin', method: :post do |f| %>
+  <%= form_with model: @item, url: '/admin', method: :post do |f| %>
     <p>
-    <%= f.label(:name, "商品名") %>
-    <%= f.text_field :name %>
+      <%= f.label(:name, "商品名") %>
+      <%= f.text_field :name %>
     </p>
     <p>
-    <%= f.label(:price, "値段 　") %>
-    <%= f.text_field :price %>
+      <%= f.label(:price, "値段 　") %>
+      <%= f.text_field :price %>
     </p>
     <p>
-    <%= f.label(:sku, "型番 　") %>
-    <%= f.text_field :sku %>
+      <%= f.label(:sku, "型番 　") %>
+      <%= f.text_field :sku %>
     </p>
     <p>
-    <%= f.label(:description, "説明　") %>
-    <%= f.text_area :description %>
+      <%= f.label(:description, "説明　") %>
+      <%= f.text_area :description %>
     </p>
     <%= f.file_field :image %>
     <p>
-    <%= f.submit "作成" %>
+      <%= f.submit "作成" %>
     </p>
     <p>
-    <%= link_to "戻る", '/admin' %>
+      <%= link_to "戻る", '/admin' %>
     </p>
-
-
-
-<% end %>
-
+  <% end %>
 </div>
