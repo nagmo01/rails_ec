@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  
   def index
     @items = Item.all.order(created_at: :asc)
   end
@@ -54,6 +55,11 @@ private
     params.require(:item).permit(:name, :price, :sku, :description, :image)
   end
   
+  def basic_auth
+    authenticate_or_request_with_http_basic do |username, password|
+      username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    end
+  end
 
 
 end
