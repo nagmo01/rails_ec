@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AdminController < ApplicationController
+class Admin::ItemsController < ApplicationController
   before_action :basic_auth
   def index
     @items = Item.all.order(created_at: :asc)
@@ -15,7 +15,7 @@ class AdminController < ApplicationController
 
     if @item.save
       flash[:success] = '商品を登録しました。'
-      redirect_to '/admin'
+      redirect_to admin_items_path
     else
       flash[:danger] = '商品の登録に失敗しました。もう一度試してください。'
       render 'new', status: :unprocessable_entity
@@ -35,7 +35,7 @@ class AdminController < ApplicationController
 
     if @item.update(item_params)
       flash[:success] = '商品を更新しました。'
-      redirect_to '/admin'
+      redirect_to admin_items_path
     else
       flash[:danger] = '商品の更新に失敗しました。もう一度試してください。'
       render :edit
@@ -46,7 +46,7 @@ class AdminController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     flash[:success] = '投稿が削除されました。'
-    redirect_to '/admin', status: :see_other
+    redirect_to admin_items_path, status: :see_other
   end
 
   private

@@ -1,5 +1,5 @@
 <div class="nav justify-content-center">
-  <%= form_with model: @item, url: '/admin', method: :post do |f| %>
+  <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
     <p>
       <%= f.label(:name, "商品名") %>
       <%= f.text_field :name %>
@@ -21,7 +21,7 @@
       <%= f.submit "作成" %>
     </p>
     <p>
-      <%= link_to "戻る", '/admin' %>
+      <%= link_to "戻る", admin_items_path %>
     </p>
   <% end %>
 </div>
