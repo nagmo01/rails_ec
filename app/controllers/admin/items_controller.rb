@@ -13,6 +13,9 @@ module Admin
 
     def create
       @item = Item.new(item_params)
+      unless @item.image.attached?
+        @item.image.attach(io: File.open(Rails.root.join('app/assets/images/cart.jpg')), filename: 'cart.jpg')
+      end
 
       if @item.save
         flash[:success] = '商品を登録しました。'
