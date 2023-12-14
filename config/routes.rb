@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # patch '/admin/:id' => 'admin#update'
   # delete '/admin/:id' => 'admin#destroy'
 
+  post '/cart/:id' => 'cart#create'
+
   get '/' => 'items#index'
   get '/items/:id' => 'items#show'
 end
