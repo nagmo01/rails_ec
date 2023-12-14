@@ -1,14 +1,15 @@
 class CartController < ApplicationController
+  before_action :set_session
+
   def index
   end
 
   def show
+    @cart = Cart.find_by(sha: session[:sha])
+
   end
   
   def create
-    unless session[:sha]
-      session[:sha] = SecureRandom.hex(10)
-    end
 
     @cart = Cart.new
     @cart.sha = session[:sha]
@@ -28,5 +29,11 @@ class CartController < ApplicationController
   def destroy
   end
 
+
+  private
+
+  def set_session
+    session[:sha] = SecureRandom.hex(10) unless session[:sha]
+  end
 
 end
