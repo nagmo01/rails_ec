@@ -6,15 +6,18 @@ class CartController < ApplicationController
 
   def show
     @cart = Cart.find_by(sha: session[:sha])
-
   end
-  
+
   def create
 
-    @cart = Cart.new
-    @cart.sha = session[:sha]
-    @cart.item_id = params[:id]
-    @cart.quantity = 1
+    if @cart = Cart.where(sha: session[:sha], item_id: params[:id]).first
+      @cart.quantity += 1
+    else
+      @cart = Cart.new
+      @cart.sha = session[:sha]
+      @cart.item_id = params[:id]
+      @cart.quantity = 1
+    end
 
     if @cart.save
       flash[:success] = 'カートに追加しました。'
