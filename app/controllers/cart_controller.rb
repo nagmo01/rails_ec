@@ -10,13 +10,19 @@ class CartController < ApplicationController
 
   def create
 
+    if params[:quantity]
+      quantity = params[:quantity].to_i
+    else
+      quantity = 1
+    end
+
     if @cart = Cart.where(sha: session[:sha], item_id: params[:id]).first
-      @cart.quantity += 1
+      @cart.quantity += quantity
     else
       @cart = Cart.new
       @cart.sha = session[:sha]
       @cart.item_id = params[:id]
-      @cart.quantity = 1
+      @cart.quantity = quantity
     end
 
     if @cart.save
