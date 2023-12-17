@@ -170,6 +170,9 @@
                     <small class="text-body-secondary"><%= cart.item.description %></small>
                   </div>
                   <span class="text-body-secondary">数量: <%= cart.quantity %>個 <%= cart.item.price * cart.quantity %>円</span>
+                  <div>
+                    <%= link_to "削除", "/cart/#{cart.id}", data: { turbo_method: :delete } %>
+                  </div>
                 </li>
               <% end %>
               <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
