@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # delete '/admin/:id' => 'admin#destroy'
 
   post '/cart/:id' => 'cart#create'
+  get '/cart' => 'cart#show'
 
   get '/' => 'items#index'
   get '/items/:id' => 'items#show'

@@ -5,7 +5,12 @@ class CartController < ApplicationController
   end
 
   def show
-    @cart = Cart.find_by(sha: session[:sha])
+    @carts = Cart.where(sha: session[:sha])
+    @total_price = 0
+    @carts.each do |cart|
+      @total_price += cart.item.price * cart.quantity
+    end
+
   end
 
   def create
@@ -24,6 +29,7 @@ class CartController < ApplicationController
       @cart.item_id = params[:id]
       @cart.quantity = quantity
     end
+
 
     if @cart.save
       flash[:success] = 'カートに追加しました。'
