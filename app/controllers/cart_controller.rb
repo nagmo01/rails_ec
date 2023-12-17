@@ -39,8 +39,7 @@ class CartController < ApplicationController
   end
 
   def destroy
-    @carts = Cart.where(sha: session[:sha])
-    @cart = @carts.find_by(id: params[:id])
+    @cart = Cart.find_by(id: params[:id])
     @cart.destroy
     redirect_to '/cart'
   end
