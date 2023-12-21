@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CreateCarts < ActiveRecord::Migration[7.0]
+class CreateCartItems < ActiveRecord::Migration[7.0]
   def change
-    create_table :carts do |t|
-      t.text :sha, null: false
+    create_table :cart_items do |t|
+      t.references :cart, foreign_key: true
       t.references :item, foreign_key: true
       t.integer :quantity
 
