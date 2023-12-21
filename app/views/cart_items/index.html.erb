@@ -146,10 +146,10 @@
           <div class="col-md-5 col-lg-4 order-md-last border-green">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="text-primary">Your cart</span>
-              <span class="badge bg-primary rounded-pill"><%= @carts.length %></span>
+              <span class="badge bg-primary rounded-pill"><%= @cart.cart_items.length %></span>
             </h4>
             <ul class="list-group mb-3">
-              <% @carts.each do |cart| %>
+              <% @cart.cart_items.each do |cart| %>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
                     <h6 class="my-0"><%= cart.item.name %></h6>
@@ -157,7 +157,7 @@
                   </div>
                   <span class="text-body-secondary">数量: <%= cart.quantity %>個 <%= cart.item.price * cart.quantity %>円</span>
                   <div>
-                    <%= link_to "削除", "/cart/#{cart.id}", data: { turbo_method: :delete } %>
+                    <%= link_to "削除", "/cart/#{cart.id}", class: 'btn btn-outline-dark', data: { turbo_method: "delete" } %>
                   </div>
                 </li>
               <% end %>
