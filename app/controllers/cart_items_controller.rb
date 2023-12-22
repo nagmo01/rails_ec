@@ -2,7 +2,7 @@
 
 class CartItemsController < ApplicationController
   before_action :set_session
-  before_action :get_cart
+  before_action :cart
 
   def index
     @total_price = 0
@@ -27,8 +27,6 @@ class CartItemsController < ApplicationController
       @cart_item.quantity = quantity
     end
 
-
-
     if @cart_item.save
       flash[:success] = 'カートに追加しました。'
       redirect_to '/'
@@ -47,19 +45,17 @@ class CartItemsController < ApplicationController
   private
 
   def set_session
-    unless session[:session_id]
-      session[:session_id] = SecureRandom.hex(10)
-    end
+    return if session[:session_id]
+
+    session[:session_id] = SecureRandom.hex(10)
   end
 
-  def get_cart
+  def cart
     @cart = Cart.find_by(session_id: session[:session_id])
-    unless @cart
-      @cart = Cart.new
-      @cart.session_id = session[:session_id]
-      @cart.save
-    end
+    return if @cart
+
+    @cart = Cart.new
+    @cart.session_id = session[:session_id]
+    @cart.save
   end
-
-
 end
