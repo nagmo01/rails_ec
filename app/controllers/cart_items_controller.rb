@@ -45,11 +45,12 @@ class CartItemsController < ApplicationController
   private
 
   def set_session
-    return if session[:cart_id]
+    unless session[:cart_id]
+      @cart = Cart.new
+      @cart.save
+      session[:cart_id] = @cart.id
+    end
 
-    @cart = Cart.new
-    @cart.save
-    session[:cart_id] = @cart.id
   end
 
   def cart
