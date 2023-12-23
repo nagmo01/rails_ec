@@ -29,33 +29,31 @@ class CartItemsController < ApplicationController
 
     if @cart_item.save
       flash[:success] = 'カートに追加しました。'
-      redirect_to '/'
+      redirect_to root_path
     else
       flash[:danger] = 'カートの追加に失敗しました。もう一度試してください。'
-      render 'index', status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
   def destroy
     @cart_item = CartItem.find_by(id: params[:id])
     @cart_item.destroy
-    redirect_to '/cart'
+    redirect_to cart_path
   end
 
   private
 
   def set_session
-    return if session[:session_id]
+    return if session[:cart_id]
 
-    session[:session_id] = SecureRandom.hex(10)
+    @cart = Cart.new
+    @cart.save
+    session[:cart_id] = @cart.id
   end
 
   def cart
-    @cart = Cart.find_by(session_id: session[:session_id])
-    return if @cart
-
-    @cart = Cart.new
-    @cart.session_id = session[:session_id]
-    @cart.save
+    @cart = Cart.find_by(id: session[:cart_id])
   end
+
 end
