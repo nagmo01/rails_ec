@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>精算フォーム</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN">
-
   </head>
-
   <body class="bg-body-tertiary">
     <div class="container">
       <main>
         <div class="py-5 text-center border-red">
           <h2>精算フォーム</h2>
         </div>
-
         <div class="row g-5">
           <div class="col-md-5 col-lg-4 order-md-last  border-green">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -22,7 +19,6 @@
               <span class="badge bg-primary rounded-pill"><%= @cart.cart_items.length %></span>
             </h4>
             <ul class="list-group mb-3">
-
               <% @cart.cart_items.each do |cart| %>
                 <li class="list-group-item d-flex justify-content-between lh-sm">
                   <div>
@@ -34,10 +30,7 @@
                     <%= link_to "削除", "/cart/#{cart.id}", class: 'btn btn-outline-dark', data: { turbo_method: "delete" } %>
                   </div>
                 </li>
-
               <% end %>
-
-
               <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
                 <div class="text-success">
                   <h6 class="my-0">プロモーションコード</h6>
@@ -50,7 +43,6 @@
                 <strong><%= @total_price %>円</strong>
               </li>
             </ul>
-
             <form class="card p-2">
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="プロモーションコード">
@@ -78,7 +70,6 @@
                     名前を入力してください
                   </div>
                 </div>
-
                 <div class="col-12">
                   <label for="username" class="form-label">ユーザーネーム</label>
                   <div class="input-group has-validation">
@@ -89,7 +80,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="col-12">
                   <label for="email" class="form-label">Eメール <span class="text-body-secondary">(任意)</span></label>
                   <input type="email" class="form-control" id="email" placeholder="you@example.com">
@@ -97,7 +87,6 @@
                     配送の更新に有効なメールアドレスを入力してください
                   </div>
                 </div>
-
                 <div class="col-12">
                   <label for="address" class="form-label">住所</label>
                   <input type="text" class="form-control" id="address" placeholder="地番" required>
@@ -105,12 +94,10 @@
                     配送先住所を入力してください
                   </div>
                 </div>
-
                 <div class="col-12">
                   <label for="address2" class="form-label">住所 2 <span class="text-body-secondary">(任意)</span></label>
                   <input type="text" class="form-control" id="address2" placeholder="アパート・マンション名">
                 </div>
-
                 <div class="col-md-5">
                   <label for="pref" class="form-label">都道府県</label>
                   <select class="form-select d-block w-100" id="pref" required>
@@ -139,12 +126,8 @@
                   </div>
                 </div>
               </div>
-
-
               <hr class="my-4">
-
               <h4 class="mb-3">お支払い(クレジットカード)</h4>
-
               <div class="row gy-3">
                 <div class="col-md-6">
                   <label for="cc-name" class="form-label">カードの名義</label>
@@ -176,17 +159,12 @@
                   </div>
                 </div>
               </div>
-
               <hr class="my-4">
-
               <button class="w-100 btn btn-primary btn-lg" type="submit">精算を続ける</button>
             </form>
           </div>
         </div>
       </main>
-
     </div>
-
   </body>
-
 </html>

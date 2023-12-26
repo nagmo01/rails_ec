@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  root "items#index"
+  root 'items#index'
   # get '/admin' => 'admin#index'
   # get '/admin/new' => 'admin#new'
   # get '/admin/:id' => 'admin#show'
@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   get '/cart' => 'cart_items#index'
   delete '/cart/:id' => 'cart_items#destroy'
 
-  #get '/' => 'items#index'
+  # get '/' => 'items#index'
   get '/items/:id' => 'items#show'
 end
