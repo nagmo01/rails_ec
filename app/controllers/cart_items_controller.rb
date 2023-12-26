@@ -2,7 +2,6 @@
 
 class CartItemsController < ApplicationController
   before_action :set_session
-  before_action :cart
 
   def index
     @total_price = 0
@@ -18,13 +17,10 @@ class CartItemsController < ApplicationController
                  1
                end
 
-    if (@cart_item = CartItem.where(cart_id: @cart.id, item_id: params[:id]).first)
+    if (@cart_item = @cart.cart_items.where(item_id: params[:id]).first)
       @cart_item.quantity += quantity
     else
-      @cart_item = CartItem.new
-      @cart_item.cart_id = @cart.id
-      @cart_item.item_id = params[:id]
-      @cart_item.quantity = quantity
+      @cart_item = @cart.cart_items.build(item_id: params[:id], quantity:)
     end
 
     if @cart_item.save
@@ -50,11 +46,6 @@ class CartItemsController < ApplicationController
       @cart.save
       session[:cart_id] = @cart.id
     end
-
-  end
-
-  def cart
     @cart = Cart.find_by(id: session[:cart_id])
   end
-
 end
