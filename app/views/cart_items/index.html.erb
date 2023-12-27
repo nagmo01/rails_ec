@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>精算フォーム</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN">
+  </head>
+  <body class="bg-body-tertiary">
+    <div class="container">
+      <main>
+        <div class="py-5 text-center border-red">
+          <h2>精算フォーム</h2>
+        </div>
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last  border-green">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-primary">カート</span>
+              <span class="badge bg-primary rounded-pill"><%= @cart.cart_items.length %></span>
+            </h4>
+            <ul class="list-group mb-3">
+              <% @cart.cart_items.each do |cart| %>
+                <li class="list-group-item d-flex justify-content-between lh-sm">
+                  <div>
+                    <h6 class="my-0"><%= cart.item.name %></h6>
+                    <small class="text-body-secondary"><%= cart.item.description %></small>
+                  </div>
+                  <span class="text-body-secondary">数量: <%= cart.quantity %>個 <%= cart.item.price * cart.quantity %>円</span>
+                  <div>
+                    <%= link_to "削除", "/cart/#{cart.id}", class: 'btn btn-outline-dark', data: { turbo_method: "delete" } %>
+                  </div>
+                </li>
+              <% end %>
+              <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                <div class="text-success">
+                  <h6 class="my-0">プロモーションコード</h6>
+                  <small>EXAMPLECODE</small>
+                </div>
+                <span class="text-success">−￥5000</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between">
+                <span>合計 (円)</span>
+                <strong><%= @total_price %>円</strong>
+              </li>
+            </ul>
+            <form class="card p-2">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="プロモーションコード">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-secondary">適用</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-7 col-lg-8 border-blue">
+            <h4 class="mb-3">請求先住所</h4>
+            <form class="needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <label for="familyName" class="form-label">姓</label>
+                  <input type="text" class="form-control" id="familyName" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    名字を入力してください
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <label for="givenName" class="form-label">名</label>
+                  <input type="text" class="form-control" id="givenName" placeholder="" value="" required>
+                  <div class="invalid-feedback">
+                    名前を入力してください
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="username" class="form-label">ユーザーネーム</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text">@</span>
+                    <input type="text" class="form-control" id="username" placeholder="ユーザーネーム" required>
+                    <div class="invalid-feedback">
+                      ユーザー名が必要です
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="email" class="form-label">Eメール <span class="text-body-secondary">(任意)</span></label>
+                  <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                  <div class="invalid-feedback">
+                    配送の更新に有効なメールアドレスを入力してください
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="address" class="form-label">住所</label>
+                  <input type="text" class="form-control" id="address" placeholder="地番" required>
+                  <div class="invalid-feedback">
+                    配送先住所を入力してください
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label for="address2" class="form-label">住所 2 <span class="text-body-secondary">(任意)</span></label>
+                  <input type="text" class="form-control" id="address2" placeholder="アパート・マンション名">
+                </div>
+                <div class="col-md-5">
+                  <label for="pref" class="form-label">都道府県</label>
+                  <select class="form-select d-block w-100" id="pref" required>
+                    <option>選択...</option>
+                    <option>北海道</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    都道府県を選択してください
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label for="city" class="form-label">市町村</label>
+                  <select class="form-select d-block w-100" id="city" required>
+                    <option>選択...</option>
+                    <option>札幌市</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    市町村を選択してください
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="zip" class="form-label">郵便番号</label>
+                  <input type="text" class="form-control" id="zip" placeholder="" required>
+                  <div class="invalid-feedback">
+                    郵便番号を入力してください
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              <h4 class="mb-3">お支払い(クレジットカード)</h4>
+              <div class="row gy-3">
+                <div class="col-md-6">
+                  <label for="cc-name" class="form-label">カードの名義</label>
+                  <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                  <small class="text-body-secondary">カード上に表示されているフルネーム</small>
+                  <div class="invalid-feedback">
+                    カードの名義を入力してください
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="cc-number" class="form-label">クレジットカード番号</label>
+                  <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                  <div class="invalid-feedback">
+                    クレジットカード番号を入力してください
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="cc-expiration" class="form-label">有効期限</label>
+                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                  <div class="invalid-feedback">
+                    有効期限を入力してください
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <label for="cc-cvv" class="form-label">CVV</label>
+                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                  <div class="invalid-feedback">
+                    セキュリティコードを入力してください
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4">
+              <button class="w-100 btn btn-primary btn-lg" type="submit">精算を続ける</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
