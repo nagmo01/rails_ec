@@ -7,11 +7,11 @@ class CreatePayments < ActiveRecord::Migration[7.0]
       t.string :email
       t.string :address
       t.string :address2
-      t.string :country
-      t.string :state
+      t.string :pref
+      t.string :city
       t.integer :zip
       t.string :cc_name
-      t.integer :cc_number
+      t.bigint :cc_number
       t.integer :cc_expiration
       t.integer :cc_cvv
 
