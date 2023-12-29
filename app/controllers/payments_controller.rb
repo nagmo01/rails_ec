@@ -12,7 +12,8 @@ class PaymentsController < ApplicationController
       @cart.cart_items.each do |cart_item|
         @total_price += cart_item.item.price * cart_item.quantity
       end
-      render template: "cart_items/index"
+      @messages = @payment.errors
+      render template: "cart_items/index", status: :unprocessable_entity
     end
   end
 
