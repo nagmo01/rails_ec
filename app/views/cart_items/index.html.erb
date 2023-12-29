@@ -60,57 +60,72 @@
                   <%= f.label(:last_name, "姓") %>
                   <div>
                     <%= f.text_field :last_name %>
-                    <%= @messages.full_messages_for(:last_name).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:last_name).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:first_name, "名") %>
                   <div>
                     <%= f.text_field :first_name %>
-                    <%= @messages.full_messages_for(:first_name).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:first_name).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:user_name, "ユーザー名") %>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
+                  <div>
                     <%= f.text_field :user_name %>
-                    <%= @messages.full_messages_for(:user_name).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:first_name).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:email, "Eメール(任意)") %>
                   <div>
                     <%= f.text_field :email %>
-                    <%= @messages.full_messages_for(:email).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:email).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:zip, "郵便番号(ハイフンなし)") %>
                   <div>
                     <%= f.text_field :zip %>
-                    <%= @messages.full_messages_for(:zip).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:zip).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:pref, "都道府県") %>
                   <div>
                     <%= f.text_field :pref %>
-                    <%= @messages.full_messages_for(:pref).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:pref).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:city, "市町村") %>
                   <div>
                     <%= f.text_field :city %>
-                    <%= @messages.full_messages_for(:city).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:city).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:address, "住所") %>
                   <div>
                     <%= f.text_field :address %>
-                    <%= @messages.full_messages_for(:address).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:address).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
@@ -127,28 +142,36 @@
                   <%= f.label(:cc_name, "カードの名義") %>
                   <div>
                     <%= f.text_field :cc_name %>
-                    <%= @messages.full_messages_for(:cc_name).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:cc_name).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:cc_number, "クレジットカード番号(16桁)") %>
                   <div>
                     <%= f.text_field :cc_number %>
-                    <%= @messages.full_messages_for(:cc_number).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:cc_number).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:cc_expiration, "有効期限(4桁)") %>
                   <div>
                     <%= f.text_field :cc_expiration %>
-                    <%= @messages.full_messages_for(:cc_expiration).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:cc_expiration).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <%= f.label(:cc_cvv, "CVV(3桁)") %>
                   <div>
                     <%= f.text_field :cc_cvv %>
-                    <%= @messages.full_messages_for(:cc_cvv).join(", ") if @messages %>
+                    <div class="text-red">
+                      <%= @messages.full_messages_for(:cc_cvv).join(", ") if @messages %>
+                    </div>
                   </div>
                 </div>
               </div>
