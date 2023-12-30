@@ -1,4 +1,5 @@
 class Payment < ApplicationRecord
+  has_many :purchased_items
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :last_name, presence: true
   validates :first_name, presence: true
