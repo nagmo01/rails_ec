@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class Payment < ApplicationRecord
-  has_many :purchased_items
+  has_many :purchased_items, dependent: :destroy
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :user_name, uniqueness: true, presence: true
+  validates :user_name, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :address, presence: true
   validates :pref, presence: true

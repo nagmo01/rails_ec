@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  
   namespace :admin do
     resources :items
     resources :purchased_items
@@ -16,6 +15,4 @@ Rails.application.routes.draw do
 
   get 'payments/create'
   post '/payment' => 'payments#create'
-
-
 end

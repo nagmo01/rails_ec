@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module Admin
   class PurchasedItemsController < ApplicationController
     before_action :basic_auth
     def index
       @payments = Payment.all
-
     end
 
     def show
@@ -21,7 +22,5 @@ module Admin
         username == ENV['BASIC_AUTH_CHECKOUT_USER'] && password == ENV['BASIC_AUTH_CHECKOUT_PASSWORD']
       end
     end
-
-
   end
 end
