@@ -5,13 +5,16 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     @cart = Cart.find_by(id: session[:cart_id])
 
-    if @payment.save
-      create_purchased_items
-      CheckoutMailer.complete(@payment).deliver
-      clear_cart
-      flash[:success] = '購入ありがとうございます'
-      redirect_to root_path
-    else
+    begin
+      ActiveRecord::Base.transaction do
+        @payment.save!
+        create_purchased_items
+        CheckoutMailer.complete(@payment).deliver
+        clear_cart
+        flash[:success] = '購入ありがとうございます'
+        redirect_to root_path
+      end
+    rescue StandardError
       flash[:danger] = '購入に失敗しました'
       @total_price = calculate_total_price
       @messages = @payment.errors
@@ -30,7 +33,7 @@ class PaymentsController < ApplicationController
         description: cart_item.item.description,
         quantity: cart_item.quantity
       )
-      @purchased_item.save
+      @purchased_item.save!
     end
   end
 
