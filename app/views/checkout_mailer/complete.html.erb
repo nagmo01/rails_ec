@@ -1,0 +1,76 @@
+#test_email.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @payment.user_name %>様、決済完了のお知らせ</h1>
+    <h2>請求先情報</h2>
+    <div>氏名</div>
+    <div>
+      <%= @payment.last_name + " " + @payment.first_name %>
+    </div>
+    <div>Eメール</div>
+    <div>
+      <%= @payment.email %>
+    </div>
+    <div>郵便番号</div>
+    <div>
+      <%= @payment.zip %>
+    </div>
+    <div>住所</div>
+    <div>
+      <%= @payment.pref + " " + @payment.city + " " + @payment.address + " " + @payment.address2 %>
+    </div>
+    <h2>お支払い情報</h2>
+    <div>カードの名義</div>
+    <div>
+      <%= @payment.cc_name %>
+    </div>
+    <div>クレジットカード番号</div>
+    <div>
+      <%= @payment.cc_number %>
+    </div>
+    <div>有効期限</div>
+    <div>
+      <%= @payment.cc_expiration %>
+    </div>
+    <div>CVV</div>
+    <div>
+      <%= @payment.cc_cvv %>
+    </div>
+    <br>
+    <h2>購入した商品</h2>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>説明文</th>
+            <th>価格</th>
+            <th>数量</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @payment.purchased_items.each do |purchased_item| %>
+            <tr>
+              <td><%= purchased_item.name %></td>
+              <td><%= purchased_item.description %></td>
+              <td><%= purchased_item.price %>円</td>
+              <td><%= purchased_item.quantity %>個</td>
+            </tr>
+          <% end %>
+          <br>
+          <p>合計：</p>
+          <%= @total_price.to_s + " 円" %>
+          <!-- 他の行を追加する -->
+        </tbody>
+      </table>
+    </div>
+    <p>
+      このサイトにログインするには、<%= @url %>をクリックしてください。
+    </p>
+    <p>これで取引は終了です！ありがとうございました！</p>
+  </body>
+</html>

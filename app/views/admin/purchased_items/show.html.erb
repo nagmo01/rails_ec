@@ -1,0 +1,31 @@
+<h1 class="text-center">決済番号: <%= @payment.id %>の購入商品</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">商品名</th>
+        <th scope="col">説明文</th>
+        <th scope="col">価格</th>
+        <th scope="col">数量</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payment.purchased_items.each do |purchased_item| %>
+        <tr>
+          <td><%= purchased_item.name %></td>
+          <td><%= purchased_item.description %></td>
+          <td><%= purchased_item.price %>円</td>
+          <td><%= purchased_item.quantity %>個</td>
+        </tr>
+      <% end %>
+      <!-- 他の行を追加する -->
+    </tbody>
+  </table>
+  <div>
+    <span>合計:</span>
+    <%= @total_price %>
+    <span>円</span>
+  </div>
+  <div>
+    <%= link_to "戻る", admin_purchased_items_path %>
+  </div>

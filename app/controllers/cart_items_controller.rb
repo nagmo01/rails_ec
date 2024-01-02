@@ -8,6 +8,7 @@ class CartItemsController < ApplicationController
     @cart.cart_items.each do |cart_item|
       @total_price += cart_item.item.price * cart_item.quantity
     end
+    @payment = Payment.new
   end
 
   def create

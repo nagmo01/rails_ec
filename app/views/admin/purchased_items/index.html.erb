@@ -1,0 +1,28 @@
+<h1 class="text-center">決済一覧</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">決済id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">都道府県</th>
+        <th scope="col">市町村</th>
+        <th scope="col">購入商品</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payments.each do |payment| %>
+        <tr>
+          <td><%= payment.id %></td>
+          <td><%= payment.user_name %></td>
+          <td><%= payment.email %></td>
+          <td><%= payment.pref %></td>
+          <td><%= payment.city %></td>
+          <td><%= link_to "詳細", admin_purchased_item_path(payment.id) %></td>
+        </tr>
+      <% end %>
+      <!-- 他の行を追加する -->
+    </tbody>
+  </table>
+</div>
