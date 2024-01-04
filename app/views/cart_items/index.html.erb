@@ -31,26 +31,30 @@
                   </div>
                 </li>
               <% end %>
-              <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                <div class="text-success">
-                  <h6 class="my-0">プロモーションコード</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span class="text-success">−￥5000</span>
-              </li>
+              <% if @promotion_code %>
+                <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
+                  <div class="text-success">
+                    <h6 class="my-0">プロモーションコード</h6>
+                    <small><%= @promotion_code.code %></small>
+                  </div>
+                  <span class="text-success"><%= @promotion_code.discount_amount %>円</span>
+                </li>
+              <% end %>
               <li class="list-group-item d-flex justify-content-between">
                 <span>合計 (円)</span>
                 <strong><%= @total_price %>円</strong>
               </li>
             </ul>
-            <form class="card p-2">
+            <div class="text-center text-success"><%= flash[:successful] %></div>
+            <div class="text-center text-danger"><%= flash[:failure] %></div>
+            <%= form_with url: '/code', local: true, html: { class: 'card p-2' }, method: :post do |form| %>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="プロモーションコード">
+                <%= form.text_field :code, class: 'form-control', placeholder: 'プロモーションコード' %>
                 <div class="input-group-append">
-                  <button type="submit" class="btn btn-secondary">適用</button>
+                  <%= form.submit '適用', class: 'btn btn-secondary' %>
                 </div>
               </div>
-            </form>
+            <% end %>
           </div>
           <div class="col-md-7 col-lg-8 border-blue">
             <h4 class="mb-3">請求先住所</h4>
