@@ -10,6 +10,7 @@ gem 'dotenv-rails'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'rails-i18n'
+gem 'pry-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.0'
