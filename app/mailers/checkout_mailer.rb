@@ -6,6 +6,10 @@ class CheckoutMailer < ApplicationMailer
     payment.purchased_items.each do |item|
       @total_price += item.price * item.quantity
     end
+    if payment.promotion_code
+      @promotion_code = payment.promotion_code
+      @total_price -= @promotion_code.discount_amount
+    end
     @payment = payment
     if Rails.env.development?
       @url = 'http://localhost:3000'
