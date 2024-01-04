@@ -8,6 +8,10 @@ class CartItemsController < ApplicationController
     @cart.cart_items.each do |cart_item|
       @total_price += cart_item.item.price * cart_item.quantity
     end
+    if session[:code]
+      @promotion_code = PromotionCode.find_by(code: session[:code])
+      @total_price -= @promotion_code.discount_amount
+    end
     @payment = Payment.new
   end
 
