@@ -9,6 +9,7 @@ gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'image_processing'
 gem 'mini_magick'
+gem 'pry-rails'
 gem 'rails-i18n'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

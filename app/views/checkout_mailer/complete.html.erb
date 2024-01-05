@@ -62,6 +62,11 @@
             </tr>
           <% end %>
           <br>
+          <% if @promotion_code %>
+            <p>プロモーションコード: </p>
+            <%= @promotion_code.discount_amount.to_s + " 円" %>
+          <% end %>
+          <br>
           <p>合計：</p>
           <%= @total_price.to_s + " 円" %>
           <!-- 他の行を追加する -->
